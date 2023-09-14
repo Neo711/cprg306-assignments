@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (<main>
-    <title>CPRG-306: Web Development 2 Assignmentss</title>
+    <h1>CPRG-306: Web Development 2 Assignmentss</h1>
 
     <Link href="/week2">Week 2 </Link>
     </main>
