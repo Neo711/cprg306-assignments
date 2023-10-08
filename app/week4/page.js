@@ -1,26 +1,12 @@
-import { useState } from 'react';
+import NewItem from './new-item';
 
-function component()  {
-    const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(1);
-    const [category, setCategory] = useState("produce");
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-        const item = {
-            name: name,
-            quantity: quantity,
-            category: category
-        };
-
-        console.log(item);
-    };
-
-    return(
-        <form onSubmit={handleSubmit}>
-            <button type="Submit">Submit</button>
-        </form>
-
-    );
+function Page() {
+  return (
+    <div className="bg-black-100 min-h-screen py-8">
+      <h1 className="text-2xl text-center mb-6">Add New Item</h1>
+      <NewItem />
+    </div>
+  );
 }
+
+export default Page;
