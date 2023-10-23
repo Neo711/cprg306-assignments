@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 
-function NewItem() {
+function NewItem({ onAddItem }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
@@ -13,8 +13,7 @@ function NewItem() {
 
     const item = { name, quantity, category };
 
-    console.log(item);
-    alert(`Name: ${name}, Quantity: ${quantity}, Category: ${category}`);
+    onAddItem(item);
 
     setName("");
     setQuantity(1);

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Item from './item';
-import items from './items.json';
 
-function ItemList() {
+function ItemList({ items }) {
     const [sortBy, setSortBy] = useState('name');
-    
+
     let sortedItems = [...items];
     if (sortBy === 'name') {
         sortedItems.sort((a, b) => a.name.localeCompare(b.name));
