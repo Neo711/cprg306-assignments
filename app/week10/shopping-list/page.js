@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import NewItem from './new-item.js';  
 import ItemList from './item-list.js'; 
 import MealIdeas from './meal-ideas.js';  
-import itemsData from './items.json'; 
+import getItems from './service/shopping-list-service.js'; 
+import addItem from './service/shopping-list-service.js';   
+import { useEffect } from 'react';
 
 function Page() {
     const [items, setItems] = useState(itemsData);
@@ -29,5 +31,31 @@ function Page() {
         </div>
     );
 }
+
+
+async function loadItems() {
+    try {
+        const fetchedItems = await getItems(user.uid); // Assuming user.uid is available
+        setItems(fetchedItems);
+    } catch (error) {
+        console.error('Error fetching items:', error);
+    }
+}
+
+
+useEffect(() => {
+    loadItems();
+}, [user.uid]); // Dependency array
+
+
+const handleAddItem = async (newItem) => {
+    try {
+        const newItemWithId = await addItem(newItem, user.uid); // newItemWithId should include the id returned from the server
+        setItems(prevItems => [...prevItems, newItemWithId]);
+    } catch (error) {
+        console.error('Error adding item:', error);
+    }
+};
+
 
 export default Page;
